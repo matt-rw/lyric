@@ -26,6 +26,23 @@ def get_lyrics(artist: str, song: str) -> str | None:
     return lyrics.get_text()
 
 
+def format_name(name: str):
+    """Format name for URL query.
+
+    :param name:
+    
+    :return: String with replaced characters.
+    """
+    return (
+        name
+        .lower()
+        .replace(' ', '')
+        .replace('.', '')
+        .replace(',', '')
+        .replace('-', '')
+    )
+
+
 def parse_args() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
@@ -55,8 +72,8 @@ def parse_args() -> argparse.ArgumentParser:
     )
     args = parser.parse_args()
     
-    args.f_artist = args.artist.lower().replace(' ', '')
-    args.f_song = args.song.lower().replace(' ', '')
+    args.f_artist = format_name(args.artist)
+    args.f_song = format_name(args.song)
     
     return args
 
