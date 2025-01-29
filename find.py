@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# For personal use only.
+
 import argparse
 import os
 import sys
@@ -26,21 +29,19 @@ def get_lyrics(artist: str, song: str) -> str | None:
     return lyrics.get_text()
 
 
-def format_name(name: str):
+def format_name(name: str) -> str:
     """Format name for URL query.
 
     :param name:
     
     :return: String with replaced characters.
     """
-    return (
-        name
-        .lower()
-        .replace(' ', '')
-        .replace('.', '')
-        .replace(',', '')
-        .replace('-', '')
-    )
+    replacements = [' ', '.', ',', '-', ')', '(']
+    replaced = ''
+    for char in name:
+        if char in replacements:
+            continue
+        replaced += char.lower()
 
 
 def parse_args() -> argparse.ArgumentParser:
@@ -53,10 +54,7 @@ def parse_args() -> argparse.ArgumentParser:
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    parser.add_argument(
-        'artist',
-        help='artist name'
-    )
+    parser.add_argument('artist', help='artist name')
     parser.add_argument('song', help='song name')
     parser.add_argument(
         '-f',

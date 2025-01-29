@@ -28,7 +28,7 @@ Living on the road my friend
 Is gonna keep you free and clean
 Now you wear your skin like iron
 And your breath as hard as kerosene
-You weren't your mama's only boy
+You weren\'t your mama\'s only boy
 But her favorite one it seems
 She began to cry when you said goodbye
 ```
