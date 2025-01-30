@@ -42,6 +42,7 @@ def format_name(name: str) -> str:
         if char in replacements:
             continue
         replaced += char.lower()
+    return replaced
 
 
 def parse_args() -> argparse.ArgumentParser:
